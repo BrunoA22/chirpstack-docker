@@ -53,6 +53,7 @@ services:
   postgres:
     image: postgres:14-alpine
     restart: unless-stopped
+    command: ["postgres", "-c", "shared_preload_libraries='pg_trgm'"]
     volumes:
       - ./configuration/postgresql/initdb:/docker-entrypoint-initdb.d
       - postgresqldata:/var/lib/postgresql/data
